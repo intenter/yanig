@@ -1,4 +1,4 @@
 package org.yanig;
 
-public class FileObject {
+public interface FileObject {
 }

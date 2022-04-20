@@ -13,12 +13,14 @@ public class YanigMain {
 
     private void generate() throws IOException {
         Folder everything = traverse("src/main/resources/collection_root");
+        System.out.println("done");
     }
 
     private Folder traverse(String collection_root) throws IOException {
         Path path = Paths.get(collection_root);
         System.out.println("path = " + path.toAbsolutePath());
-        Files.walkFileTree(path, new GalleryVisitor());
-        return null;
+        GalleryVisitor visitor = new GalleryVisitor();
+        Files.walkFileTree(path, visitor);
+        return visitor.getCurrFolder();
     }
 }

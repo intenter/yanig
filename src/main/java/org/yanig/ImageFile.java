@@ -1,4 +1,4 @@
 package org.yanig;
 
-public class ImageFile extends FileObject{
+public record ImageFile(String path) implements FileObject{
 }
