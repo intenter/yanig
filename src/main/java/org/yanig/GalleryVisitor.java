@@ -27,7 +27,8 @@ public class GalleryVisitor extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
         System.out.println("Pre folder " + dir.toAbsolutePath());
-        Folder newFolder = new Folder(dir.toAbsolutePath().toString());
+        Path relativePath = basePath.relativize(dir);
+        Folder newFolder = new Folder(relativePath);
         if (currFolder != null) {
             currFolder.entries.add(newFolder);
             foldersStack.push(currFolder);

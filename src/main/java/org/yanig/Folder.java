@@ -1,14 +1,15 @@
 package org.yanig;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Folder implements FileObject {
-    String path;
+    Path path;
     List<FileObject> entries = new ArrayList<>();
 
-    public Folder(String path) {
+    public Folder(Path path) {
         this.path = path;
     }
 

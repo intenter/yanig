@@ -17,7 +17,7 @@ public class YanigMain {
         System.out.println("Traversing collection");
         Folder collectionTree = traverse(config.collectionPath());
         System.out.println("Generating thumbnails");
-        generateThumbnails(collectionTree, config.thumbnailsPath());
+        generateThumbnails(collectionTree, config);
         System.out.println("Generating static");
         generateStatic(collectionTree);
         System.out.println("done");
@@ -27,8 +27,10 @@ public class YanigMain {
 
     }
 
-    private void generateThumbnails(Folder collectionTree, String thumbnailsTargetPath) throws IOException {
-        collectionTree.visit(new ThumbnailGeneratorVisitor(Paths.get(thumbnailsTargetPath)));
+    private void generateThumbnails(Folder collectionTree, YanigConfig config) throws IOException {
+        collectionTree.visit(new ThumbnailGeneratorVisitor(
+                Paths.get(config.collectionPath()),
+                Paths.get(config.thumbnailsPath())));
     }
 
     private Folder traverse(String collection_root) throws IOException {
