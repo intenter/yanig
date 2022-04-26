@@ -1,4 +1,6 @@
 package org.yanig;
 
-public record ImageFile(String path) implements FileObject{
+import java.nio.file.Path;
+
+public record ImageFile(Path path) implements FileObject{
 }
